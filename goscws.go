@@ -106,6 +106,14 @@ func (this *GoScws) SetMulti(mode int) error {
 	return nil
 }
 
+func (this *GoScws)GetMulti(param []int32) C.int {
+	var ret C.int
+	for _, v := range param {
+		ret |= C.int(v)
+	}
+	return  ret
+}
+
 func (this *GoScws) SendText(text []byte, len int) error {
 	var ret C.int
 	ret = C.SendText(this.scws, C.CString(string(text)), C.int(len))

@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <scws/scws.h>
-
+//
 typedef struct STScws *PSTScws;
 
 typedef void (*fnDelete)(PSTScws );
@@ -108,6 +108,7 @@ int HasWord(PSTScws pstScws, char *attr);
 PSTScws  ForkScws(PSTScws pstScws);
 
 PSTScws InitScws();
+
 //分配或初始化与 scws 系列操作的 `scws_st` 对象。该函数将自动分配、初始化、并返回新对象的指针。
 // 只能通过调用 `scws_free()` 来释放该对象
 PSTScws NewScws() {
@@ -133,7 +134,7 @@ PSTScws  ForkScws(PSTScws pstScws) {
 }
 
 PSTScws InitScws() {
-    PSTScws pS = (PSTScws ) malloc(sizeof(struct STScws));
+    PSTScws pS = (PSTScws) malloc(sizeof(struct STScws));
     memset(pS, 0, sizeof(struct STScws));
     pS->fn_delete = DeleteScws;
     pS->fn_setCharset = SetCharset;
@@ -157,8 +158,8 @@ PSTScws InitScws() {
 
 //释放 scws 操作句柄及对象内容，同时也会释放已经加载的词典和规则
 void DeleteScws(PSTScws pstScws) {
-    printf("DeleteScws\n");
     scws_free(pstScws->fd_scws);
+    pstScws->fd_scws = NULL;
     free(pstScws);
 }
 
@@ -185,7 +186,7 @@ int SetDict(PSTScws pstScws, const char *fpath, int mode) {
 int AddDict(PSTScws pstScws, const char *fpath, int mode) {
     int nRet = -1; //-1失败 0 成功
     pstScws->fd_scws->d = NULL;
-    if (nRet =  scws_add_dict(pstScws->fd_scws, fpath, mode) != 0) {
+    if (nRet = scws_add_dict(pstScws->fd_scws, fpath, mode) != 0) {
         printf("scws: 添加词典失败。");
     }
     return nRet;
@@ -241,35 +242,35 @@ int SendText(PSTScws pstScws, const char *text, int len) {
 //返回分词结果集，无返回NULL
 scws_res_t GetResult(PSTScws pstScws) {
     if (pstScws->fd_pTmpRes == NULL) {
-       pstScws->fd_pTmpRes = (scws_res_t)malloc(sizeof(struct scws_result));
+        pstScws->fd_pTmpRes = (scws_res_t)malloc(sizeof(struct scws_result));
     } else {
-       free(pstScws->fd_pTmpRes);
-       pstScws->fd_pTmpRes = (scws_res_t)malloc(sizeof(struct scws_result));
+        free(pstScws->fd_pTmpRes);
+        pstScws->fd_pTmpRes = (scws_res_t)malloc(sizeof(struct scws_result));
     }
     if (pstScws->fd_pCurRes == NULL) {
-       pstScws->fd_pRes = pstScws->fd_pCurRes = scws_get_result(pstScws->fd_scws);
-       if (pstScws->fd_pCurRes == NULL) {
-           if (pstScws->fd_pTmpRes != NULL) {
-               free(pstScws->fd_pTmpRes);
-           }
-           return NULL;
-       }
-       memcpy(pstScws->fd_pTmpRes, pstScws->fd_pCurRes, sizeof(struct scws_result));
-       if (pstScws->fd_pCurRes->next == NULL) {
-           pstScws->fd_pCurRes = NULL;
-           FreeResult(pstScws, pstScws->fd_pRes);
-       } else {
-           pstScws->fd_pCurRes = pstScws->fd_pCurRes->next;
-       }
+        pstScws->fd_pRes = pstScws->fd_pCurRes = scws_get_result(pstScws->fd_scws);
+        if (pstScws->fd_pCurRes == NULL) {
+            if (pstScws->fd_pTmpRes != NULL) {
+                free(pstScws->fd_pTmpRes);
+                pstScws->fd_pTmpRes = NULL;
+            }
+            return NULL;
+        }
+        memcpy(pstScws->fd_pTmpRes, pstScws->fd_pCurRes, sizeof(struct scws_result));
+        if (pstScws->fd_pCurRes->next == NULL) {
+            pstScws->fd_pCurRes = NULL;
+            FreeResult(pstScws, pstScws->fd_pRes);
+        } else {
+            pstScws->fd_pCurRes = pstScws->fd_pCurRes->next;
+        }
     } else {
-       memcpy(pstScws->fd_pTmpRes, pstScws->fd_pCurRes, sizeof(struct scws_result));
-       pstScws->fd_pCurRes = pstScws->fd_pCurRes->next;
-       if (pstScws->fd_pCurRes == NULL) {
-           FreeResult(pstScws, pstScws->fd_pRes);
-       }
+        memcpy(pstScws->fd_pTmpRes, pstScws->fd_pCurRes, sizeof(struct scws_result));
+        pstScws->fd_pCurRes = pstScws->fd_pCurRes->next;
+        if (pstScws->fd_pCurRes == NULL) {
+            FreeResult(pstScws, pstScws->fd_pRes);
+        }
     }
-
-   return pstScws->fd_pTmpRes;
+    return pstScws->fd_pTmpRes;
 }
 
 //释放分词结果集，注意必须传入结果集头指针。
@@ -327,7 +328,6 @@ scws_top_t GetTops(PSTScws pstScws, int limit, char *attr) {
             free(pstScws->fd_pTmpTop);
             pstScws->fd_pTmpTop = NULL;
         }
-
         FreeTops(pstScws, pstScws->fd_pTops);
         pstScws->fd_pTops = NULL;
         return NULL;
