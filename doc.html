@@ -1,0 +1,545 @@
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = ;
+	document.CALLGRAPH = ;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "."</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+				<dd><a href="#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="#pkg-constants">Constants</a></dd>
+			
+			
+			
+			
+				
+				<dd><a href="#GoScws">type GoScws</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewScws">func NewScws() *GoScws</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#GoScws.AddDict">func (this *GoScws) AddDict(fPath string, mode int) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#GoScws.DeleteScws">func (this *GoScws) DeleteScws()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#GoScws.ForkScws">func (this *GoScws) ForkScws(gs *GoScws) *GoScws</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#GoScws.GetMulti">func (this *GoScws) GetMulti(param []int32) C.int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#GoScws.GetResult">func (this *GoScws) GetResult() *Result</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#GoScws.GetTops">func (this *GoScws) GetTops(others ...interface{}) *TopWord</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#GoScws.GetWords">func (this *GoScws) GetWords(attr []byte) *TopWord</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#GoScws.HasWord">func (this *GoScws) HasWord(attr string) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#GoScws.SendText">func (this *GoScws) SendText(text []byte, len int) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#GoScws.SetCharset">func (this *GoScws) SetCharset(cs string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#GoScws.SetDict">func (this *GoScws) SetDict(fPath string, mode int) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#GoScws.SetDuality">func (this *GoScws) SetDuality(yes int) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#GoScws.SetIgnore">func (this *GoScws) SetIgnore(yes int) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#GoScws.SetMulti">func (this *GoScws) SetMulti(mode int) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#GoScws.SetRule">func (this *GoScws) SetRule(fPath string) error</a></dd>
+				
+			
+				
+				<dd><a href="#Result">type Result</a></dd>
+				
+				
+			
+				
+				<dd><a href="#TopWord">type TopWord</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/target/goscws.go">goscws.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				
+				<pre>const (
+    <span id="SCWS_XDICT_XDB">SCWS_XDICT_XDB</span>     = <a href="/pkg/C/">C</a>.<a href="/pkg/C/#SCWS_XDICT_XDB">SCWS_XDICT_XDB</a>     <span class="comment">// 表示直接读取 xdb 文件</span>
+    <span id="SCWS_XDICT_MEM">SCWS_XDICT_MEM</span>     = <a href="/pkg/C/">C</a>.<a href="/pkg/C/#SCWS_XDICT_MEM">SCWS_XDICT_MEM</a>     <span class="comment">// 表示将 xdb 文件全部加载到内存中，以 XTree 结构存放，可用异或结合另外2个使用。</span>
+    <span id="SCWS_XDICT_TXT">SCWS_XDICT_TXT</span>     = <a href="/pkg/C/">C</a>.<a href="/pkg/C/#SCWS_XDICT_TXT">SCWS_XDICT_TXT</a>     <span class="comment">// 表示要读取的词典文件是文本格式，可以和后2项结合用</span>
+    <span id="SCWS_MULTI_SHORT">SCWS_MULTI_SHORT</span>   = <a href="/pkg/C/">C</a>.<a href="/pkg/C/#SCWS_MULTI_SHORT">SCWS_MULTI_SHORT</a>   <span class="comment">// 短词</span>
+    <span id="SCWS_MULTI_DUALITY">SCWS_MULTI_DUALITY</span> = <a href="/pkg/C/">C</a>.<a href="/pkg/C/#SCWS_MULTI_DUALITY">SCWS_MULTI_DUALITY</a> <span class="comment">// 二元（将相邻的2个单字组合成一个词）</span>
+    <span id="SCWS_MULTI_ZMAIN">SCWS_MULTI_ZMAIN</span>   = <a href="/pkg/C/">C</a>.<a href="/pkg/C/#SCWS_MULTI_ZMAIN">SCWS_MULTI_ZMAIN</a>   <span class="comment">// 重要单字</span>
+    <span id="SCWS_MULTI_ZALL">SCWS_MULTI_ZALL</span>    = <a href="/pkg/C/">C</a>.<a href="/pkg/C/#SCWS_MULTI_ZALL">SCWS_MULTI_ZALL</a>    <span class="comment">// 全部单字</span>
+)</pre>
+			
+		
+		
+		
+		
+			
+			
+			<h2 id="GoScws">type <a href="/src/target/goscws.go?s=1021:1072#L29">GoScws</a>
+				<a class="permalink" href="#GoScws">&#xb6;</a>
+			</h2>
+			
+			<pre>type GoScws struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewScws">func <a href="/src/target/goscws.go?s=1142:1164#L35">NewScws</a>
+					<a class="permalink" href="#NewScws">&#xb6;</a>
+				</h3>
+				<pre>func NewScws() *<a href="#GoScws">GoScws</a></pre>
+				<p>
+分配或初始化与 GoScws 系列操作的 `scws_st` 对象。
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="GoScws.AddDict">func (*GoScws) <a href="/src/target/goscws.go?s=2603:2660#L80">AddDict</a>
+					<a class="permalink" href="#GoScws.AddDict">&#xb6;</a>
+				</h3>
+				<pre>func (this *<a href="#GoScws">GoScws</a>) AddDict(fPath <a href="/pkg/builtin/#string">string</a>, mode <a href="/pkg/builtin/#int">int</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+不会释放已加载的词典，若已经加载过该词典，则新加入的词典具有更高的优先权。
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="GoScws.DeleteScws">func (*GoScws) <a href="/src/target/goscws.go?s=1831:1863#L55">DeleteScws</a>
+					<a class="permalink" href="#GoScws.DeleteScws">&#xb6;</a>
+				</h3>
+				<pre>func (this *<a href="#GoScws">GoScws</a>) DeleteScws()</pre>
+				<p>
+释放 GoScws 系列操作的 `scws_st` 对象及对象内容，
+同时也会释放已经加载的词典和规则。
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="GoScws.ForkScws">func (*GoScws) <a href="/src/target/goscws.go?s=1550:1598#L45">ForkScws</a>
+					<a class="permalink" href="#GoScws.ForkScws">&#xb6;</a>
+				</h3>
+				<pre>func (this *<a href="#GoScws">GoScws</a>) ForkScws(gs *<a href="#GoScws">GoScws</a>) *<a href="#GoScws">GoScws</a></pre>
+				<p>
+在已有 GoScws 对象上产生一个分支，可以独立用于某个协程分词,
+以便共享内存词典、规则集，但它继承并共享父对象词典、
+规则集资源。同样需要调用 `DeleteScws()` 来释放对象。
+在该分支对象上重设词典、规则集不会影响父对象及其它分支。
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="GoScws.GetMulti">func (*GoScws) <a href="/src/target/goscws.go?s=4190:4238#L138">GetMulti</a>
+					<a class="permalink" href="#GoScws.GetMulti">&#xb6;</a>
+				</h3>
+				<pre>func (this *<a href="#GoScws">GoScws</a>) GetMulti(param []<a href="/pkg/builtin/#int32">int32</a>) <a href="/pkg/C/">C</a>.<a href="/pkg/C/#int">int</a></pre>
+				<p>
+返回需要的mode
+例如 [SCWS_MULTI_SHORT, SCWS_MULTI_DUALITY, SCWS_MULTI_ZMAIN]
+返回 ret = SCWS_MULTI_SHORT | SCWS_MULTI_DUALITY | SCWS_MULTI_ZMAIN
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="GoScws.GetResult">func (*GoScws) <a href="/src/target/goscws.go?s=5295:5334#L174">GetResult</a>
+					<a class="permalink" href="#GoScws.GetResult">&#xb6;</a>
+				</h3>
+				<pre>func (this *<a href="#GoScws">GoScws</a>) GetResult() *<a href="#Result">Result</a></pre>
+				<p>
+返回分词结果集 Result，无返回nil
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="GoScws.GetTops">func (*GoScws) <a href="/src/target/goscws.go?s=6051:6110#L195">GetTops</a>
+					<a class="permalink" href="#GoScws.GetTops">&#xb6;</a>
+				</h3>
+				<pre>func (this *<a href="#GoScws">GoScws</a>) GetTops(others ...interface{}) *<a href="#TopWord">TopWord</a></pre>
+				<p>
+返回指定的关键词表统计集，系统会自动根据词语出现的次数及其 idf 值计算排名
+参数 limit 指定取回数据的最大条数，若传入值为0或负数，则自动重设为10
+参数 attr 用来描述要排除或参与的统计词汇词性，多个词性之间用逗号隔开
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="GoScws.GetWords">func (*GoScws) <a href="/src/target/goscws.go?s=7174:7224#L229">GetWords</a>
+					<a class="permalink" href="#GoScws.GetWords">&#xb6;</a>
+				</h3>
+				<pre>func (this *<a href="#GoScws">GoScws</a>) GetWords(attr []<a href="/pkg/builtin/#byte">byte</a>) *<a href="#TopWord">TopWord</a></pre>
+				<p>
+参数 attr 是一系列词性组成的字符串，各词性之间以半角的逗号隔开
+这表示返回的词性必须在列表中，如果以~开头，则表示取反，词性必须不在列表中，若为空则返回全部词
+返回值 成功返回符合要求词汇组成的TopWord，返回 nil。返回的词汇包含的键值参见 `GetResult()`
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="GoScws.HasWord">func (*GoScws) <a href="/src/target/goscws.go?s=5053:5098#L163">HasWord</a>
+					<a class="permalink" href="#GoScws.HasWord">&#xb6;</a>
+				</h3>
+				<pre>func (this *<a href="#GoScws">GoScws</a>) HasWord(attr <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+				<p>
+返回值 如果有返回 1 没有则返回 0
+参数 attr 用来描述要排除或参与的统计词汇词性，多个词性之间用逗号隔开
+当以~开头时表示统计结果中不包含这些词性，否则表示必须包含，传入 nil 表示统计全部词性
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="GoScws.SendText">func (*GoScws) <a href="/src/target/goscws.go?s=4546:4602#L150">SendText</a>
+					<a class="permalink" href="#GoScws.SendText">&#xb6;</a>
+				</h3>
+				<pre>func (this *<a href="#GoScws">GoScws</a>) SendText(text []<a href="/pkg/builtin/#byte">byte</a>, len <a href="/pkg/builtin/#int">int</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+这个函数应在 `GetResult()` 和 `GetTops()` `HasWord()` `GetWords` 之前调用,防止出错
+连续调用后会覆盖之前的设定；故不应在多次的 GetResult
+循环中再调用 SendText() 以免出错。
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="GoScws.SetCharset">func (*GoScws) <a href="/src/target/goscws.go?s=1948:1989#L60">SetCharset</a>
+					<a class="permalink" href="#GoScws.SetCharset">&#xb6;</a>
+				</h3>
+				<pre>func (this *<a href="#GoScws">GoScws</a>) SetCharset(cs <a href="/pkg/builtin/#string">string</a>)</pre>
+				<p>
+设定当前 scws 所使用的字符集, 缺省gbk
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="GoScws.SetDict">func (*GoScws) <a href="/src/target/goscws.go?s=2283:2340#L70">SetDict</a>
+					<a class="permalink" href="#GoScws.SetDict">&#xb6;</a>
+				</h3>
+				<pre>func (this *<a href="#GoScws">GoScws</a>) SetDict(fPath <a href="/pkg/builtin/#string">string</a>, mode <a href="/pkg/builtin/#int">int</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+添加词典文件到当前 scws 对象
+SCWS_XDICT_TXT 读取的词典为文本格式
+SCWS_XDICT_XDB 直接读取xdb文件
+SCWS_XDICT_MEM 加载xdb文件直接到内存中
+先释放已加载的所有词典，在加载指定的词典。
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="GoScws.SetDuality">func (*GoScws) <a href="/src/target/goscws.go?s=3394:3439#L111">SetDuality</a>
+					<a class="permalink" href="#GoScws.SetDuality">&#xb6;</a>
+				</h3>
+				<pre>func (this *<a href="#GoScws">GoScws</a>) SetDuality(yes <a href="/pkg/builtin/#int">int</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+是否将闲散文字自动以二字分词法聚合
+如果为 1 表示执行二分聚合，0 表示不处理，缺省为 0
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="GoScws.SetIgnore">func (*GoScws) <a href="/src/target/goscws.go?s=3089:3133#L100">SetIgnore</a>
+					<a class="permalink" href="#GoScws.SetIgnore">&#xb6;</a>
+				</h3>
+				<pre>func (this *<a href="#GoScws">GoScws</a>) SetIgnore(yes <a href="/pkg/builtin/#int">int</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+设定分词结果是否忽略标点符号 1 忽略 0 不忽略
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="GoScws.SetMulti">func (*GoScws) <a href="/src/target/goscws.go?s=3852:3896#L126">SetMulti</a>
+					<a class="permalink" href="#GoScws.SetMulti">&#xb6;</a>
+				</h3>
+				<pre>func (this *<a href="#GoScws">GoScws</a>) SetMulti(mode <a href="/pkg/builtin/#int">int</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+是否针对长词符合切分
+SCWS_MULTI_SHORT   短词
+SCWS_MULTI_DUALITY 二元（将相邻的2个单字组合成一个词）
+SCWS_MULTI_ZMAIN   重要单字
+SCWS_MULTI_ZALL    全部单字
+例如 mode := SCWS_MULTI_SHORT | SCWS_MULTI_DUALITY | SCWS_MULTI_ZMAIN
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="GoScws.SetRule">func (*GoScws) <a href="/src/target/goscws.go?s=2840:2887#L90">SetRule</a>
+					<a class="permalink" href="#GoScws.SetRule">&#xb6;</a>
+				</h3>
+				<pre>func (this *<a href="#GoScws">GoScws</a>) SetRule(fPath <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+设定规则集文件
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Result">type <a href="/src/target/goscws.go?s=874:936#L16">Result</a>
+				<a class="permalink" href="#Result">&#xb6;</a>
+			</h2>
+			
+			<pre>type Result struct {
+<span id="Result.Word"></span>    Word []<a href="/pkg/builtin/#byte">byte</a>
+<span id="Result.Idf"></span>    Idf  <a href="/pkg/builtin/#float32">float32</a>
+<span id="Result.Attr"></span>    Attr []<a href="/pkg/builtin/#byte">byte</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="TopWord">type <a href="/src/target/goscws.go?s=938:1019#L22">TopWord</a>
+				<a class="permalink" href="#TopWord">&#xb6;</a>
+			</h2>
+			
+			<pre>type TopWord struct {
+<span id="TopWord.Word"></span>    Word   []<a href="/pkg/builtin/#byte">byte</a>
+<span id="TopWord.Weight"></span>    Weight <a href="/pkg/builtin/#float32">float32</a>
+<span id="TopWord.Times"></span>    Times  <a href="/pkg/builtin/#int">int</a>
+<span id="TopWord.Attr"></span>    Attr   []<a href="/pkg/builtin/#byte">byte</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	
+
+
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="..">..</a></td>
+			</tr>
+			
+
+			
+				
+					<tr>
+						<td class="pkg-name" style="padding-left: 0px;">
+							<a href="pkg/">pkg</a>
+						</td>
+						<td class="pkg-synopsis">
+							
+						</td>
+					</tr>
+				
+			
+		</table>
+	</div>
+
+
+	
+
